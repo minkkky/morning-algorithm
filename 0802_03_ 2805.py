@@ -23,22 +23,25 @@ while h >= 0:
 
 n, m = map(int, input().split())
 trees = list(map(int, input().split()))
-start, end = 0, max(trees)
+start = 0 
+end = max(trees)
 
 while start <= end:
-    middle = max(trees)//2
+    middle = (start+end)//2
     wood = 0
 
     for i in trees:
         if i > middle:
             wood += i - middle
+    
+    if wood == m:
+        end = middle
+        break
 
-    if wood >= m :
+    elif wood > m :
         start = middle +1
 
     else:
         end = middle -1
 
-print(wood)
-print(start, end)
 print(end)
